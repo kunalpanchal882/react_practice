@@ -1,17 +1,16 @@
-import React from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate, Outlet } from 'react-router'
 import DashboardSkeleton from '../../shared/ui/components/skelitons/DashboardSkeleton '
 
 const PublicProtected = () => {
 
-    const {isAuthenticate,isLoading} = useSelector(state => state.auth)
+    const {isLoading,user} = useSelector(state => state.auth)
 
-  if(!isLoading) return <DashboardSkeleton/>
+    console.log("publice protected roue loding state",isLoading)
 
+  if(isLoading) return <DashboardSkeleton/>
 
-
-  if(isAuthenticate) {
+  if(user) {
     return <Navigate to={'/main'}/>
   }
 

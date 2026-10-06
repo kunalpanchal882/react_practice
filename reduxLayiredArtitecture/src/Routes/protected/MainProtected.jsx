@@ -5,15 +5,16 @@ import DashboardSkeleton from '../../shared/ui/components/skelitons/DashboardSke
 
 const MainProtected = () => {
 
-  const {isAuthenticate,isLoading} = useSelector(state => state.auth)
+  const {isLoading,user} = useSelector(state => state.auth)
+    console.log("main protected roue loding state",isLoading)
+
 
   if(isLoading) return <DashboardSkeleton/>
 
-
-  if(!isAuthenticate) {
+  if(!user) {
     return <Navigate to={'/'}/>
   }
-
+ 
   return <Outlet />
 }
 

@@ -2,7 +2,9 @@ import { useNavigate } from "react-router";
 import {useForm} from 'react-hook-form'
 import { LoginApi } from "../api/authApi";
 import {useDispatch} from 'react-redux'
-import {addUser, setLoginLoading} from '../state/AuthSlice'
+import { setLoginLoading} from '../state/AuthSlice'
+import { loginAuthAction } from "../state/authAction";
+
 
 export const useAuth = () =>{
     let Navigate = useNavigate()
@@ -14,11 +16,12 @@ export const useAuth = () =>{
 
    }
 
-   const loginForm = async(data) => {
+   const loginForm = (data) => {
     try {
         dispatch(setLoginLoading(true));
-        const response =await LoginApi(data)
-        dispatch(addUser(response))
+        // const response =await LoginApi(data)
+        // const response = loginAuthAction(data)
+        dispatch(loginAuthAction(data))
         reset()
     } catch (error) {
         console.log("error in login api",error)

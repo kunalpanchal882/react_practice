@@ -49,16 +49,16 @@ const Navbar = () => {
           Products
         </Link>
 
-        <Link
-          to="/main/about"
+        {/* <Link
+          to="/main/"
           className={`text-sm font-medium transition ${
             isActive("/main/about")
               ? "text-orange-500"
               : "text-zinc-400 hover:text-orange-500"
           }`}
         >
-          About
-        </Link>
+          
+        </Link> */}
 
       </div>
 
